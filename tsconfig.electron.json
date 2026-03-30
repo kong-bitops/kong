@@ -1,0 +1,21 @@
+﻿{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "outDir": "dist-electron",
+    "rootDir": ".",
+    "types": ["node", "electron"]
+  },
+  "include": [
+    "electron/**/*.ts",
+    "src/db/**/*.ts",
+    "src/services/recommendationService.ts",
+    "src/types/**/*.ts",
+    "src/utils/score.ts"
+  ]
+}

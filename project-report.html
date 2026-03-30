@@ -1,0 +1,204 @@
+﻿<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HoopSole Compare - 프로젝트 보고서</title>
+  <style>
+    :root {
+      --bg: #f3f5f8;
+      --card: #ffffff;
+      --line: #d8dde6;
+      --text: #0f172a;
+      --muted: #475569;
+      --accent: #3558e5;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Noto Sans KR", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      padding: 24px;
+    }
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      background: #eef1f5;
+      border: 2px solid #d6dce5;
+      border-radius: 18px;
+      padding: 28px;
+    }
+    .title-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .num {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 22px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 40px;
+      letter-spacing: -0.4px;
+    }
+    .desc {
+      margin: 8px 0 22px;
+      font-size: 27px;
+      color: #4f668b;
+      white-space: pre-line;
+    }
+    .section {
+      background: var(--card);
+      border: 1.5px solid var(--line);
+      border-radius: 14px;
+      padding: 18px 20px;
+      margin-bottom: 16px;
+    }
+    .section h2 {
+      margin: 0 0 8px;
+      font-size: 34px;
+      letter-spacing: -0.3px;
+    }
+    .section p,
+    .section li {
+      margin: 0;
+      color: var(--muted);
+      font-size: 25px;
+    }
+    .section ul {
+      margin: 0;
+      padding-left: 24px;
+      display: grid;
+      gap: 8px;
+    }
+    .shot {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 12px;
+      background: #fff;
+    }
+    .shot img {
+      width: 100%;
+      display: block;
+    }
+    .cap {
+      margin: 8px 4px 0;
+      color: #526177;
+      font-size: 22px;
+    }
+    .foot {
+      margin-top: 14px;
+      font-size: 20px;
+      color: #607188;
+    }
+    @media (max-width: 900px) {
+      h1 { font-size: 30px; }
+      .section h2 { font-size: 25px; }
+      .section p, .section li { font-size: 18px; }
+      .desc { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="title-row">
+      <div class="num">2</div>
+      <h1>프로젝트 보고서 (HTML)</h1>
+    </div>
+
+    <p class="desc">단일 HTML 파일 제출
+(이미지는 base64로 내장)</p>
+
+    <section class="section">
+      <h2>기획</h2>
+      <p>농구화 선택 시 리뷰 정보가 분산되어 있고, 레트로 감성과 실전 성능을 동시에 비교하기 어렵다는 문제를 해결하고자 시작했다. 사용자가 자신의 플레이 스타일을 입력하면, 현대형/레트로형 모델을 함께 추천하고 이유를 설명하는 도구를 목표로 했다.</p>
+    </section>
+
+    <section class="section">
+      <h2>구성물</h2>
+      <ul>
+        <li>Windows 데스크톱 앱 (Electron + React + TypeScript)</li>
+        <li>로컬 DB(SQLite) 기반 농구화 데이터 및 즐겨찾기/추천 로그 저장</li>
+        <li>신발 탐색(필터/검색), 2~3개 모델 비교(차트/표), 맞춤 추천</li>
+        <li>한국어/영어 전환, CSV 내보내기, 비교 스크린샷 저장</li>
+        <li>모델 이미지 표시(카드/비교/추천 화면)</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>실현 방법</h2>
+      <ul>
+        <li>프론트엔드: React Router 기반 다중 화면 구성</li>
+        <li>백엔드(로컬): Electron IPC + better-sqlite3</li>
+        <li>점수 엔진: Traction, Cushioning, Support, Weight 등 가중치 계산</li>
+        <li>데이터 규칙: releaseYear 기준으로 자동 분류 (2000년 미만=Retro, 2000년 이상=Modern)</li>
+        <li>AI 도구(Codex): 구조 설계, 코드 생성, 리팩토링, 패키징 자동화</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>결과</h2>
+      <p>농구화 모델 수를 확장하고, 비교 화면에서 선택 불가 이슈를 해결했다. 신발 탐색 및 비교/추천 화면에서 이미지가 표시되도록 개선했으며, 한국어 UI와 권한 설정까지 포함한 exe 배포 파일 생성이 가능해졌다.</p>
+
+      <div class="shot">
+        <img alt="홈 화면 샘플" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjcwMCIgdmlld0JveD0iMCAwIDEyMDAgNzAwIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZzEiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzFmMjkzNyIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwZjc2NmUiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjcwMCIgZmlsbD0idXJsKCNnMSkiLz4KICA8cmVjdCB4PSI3MCIgeT0iODAiIHdpZHRoPSIxMDYwIiBoZWlnaHQ9IjU0MCIgcng9IjIwIiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjkyIi8+CiAgPHRleHQgeD0iMTIwIiB5PSIxNzAiIGZvbnQtc2l6ZT0iNTIiIGZvbnQtZmFtaWx5PSJTZWdvZSBVSSIgZmlsbD0iIzBmMTcyYSIgZm9udC13ZWlnaHQ9IjcwMCI+SG9vcFNvbGUgQ29tcGFyZSAtIEhvbWU8L3RleHQ+CiAgPHRleHQgeD0iMTIwIiB5PSIyMzAiIGZvbnQtc2l6ZT0iMzAiIGZvbnQtZmFtaWx5PSJTZWdvZSBVSSIgZmlsbD0iIzMzNDE1NSI+7ZiE64yAIHZzIOugiO2KuOuhnCDrho3qtaztmZQg67mE6rWQL+y2lOyynCDsnKDti7jrpqzti7A8L3RleHQ+CiAgPHJlY3QgeD0iMTIwIiB5PSIyODAiIHdpZHRoPSIyOTAiIGhlaWdodD0iNTgiIHJ4PSIxMiIgZmlsbD0iIzE2NjUzNCIvPgogIDx0ZXh0IHg9IjE4MCIgeT0iMzE4IiBmb250LXNpemU9IjI2IiBmb250LWZhbWlseT0iU2Vnb2UgVUkiIGZpbGw9IiNmZmZmZmYiPuyLoOuwnCDtg5Dsg4k8L3RleHQ+CiAgPHJlY3QgeD0iNDMwIiB5PSIyODAiIHdpZHRoPSIyOTAiIGhlaWdodD0iNTgiIHJ4PSIxMiIgZmlsbD0iI2ZmZmZmZiIgc3Ryb2tlPSIjMTY2NTM0IiBzdHJva2Utd2lkdGg9IjIiLz4KICA8dGV4dCB4PSI1MDAiIHk9IjMxOCIgZm9udC1zaXplPSIyNiIgZm9udC1mYW1pbHk9IlNlZ29lIFVJIiBmaWxsPSIjMTY2NTM0Ij7tlITroZztlYQg7IiY7KCVPC90ZXh0PgogIDxyZWN0IHg9Ijc0MCIgeT0iMjgwIiB3aWR0aD0iMjkwIiBoZWlnaHQ9IjU4IiByeD0iMTIiIGZpbGw9IiNmZmZmZmYiIHN0cm9rZT0iIzE2NjUzNCIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPHRleHQgeD0iNzkwIiB5PSIzMTgiIGZvbnQtc2l6ZT0iMjYiIGZvbnQtZmFtaWx5PSJTZWdvZSBVSSIgZmlsbD0iIzE2NjUzNCI+7LaU7LKcIOyLpO2WiTwvdGV4dD4KICA8dGV4dCB4PSIxMjAiIHk9IjM5MCIgZm9udC1zaXplPSIzMCIgZm9udC1mYW1pbHk9IlNlZ29lIFVJIiBmaWxsPSIjMGYxNzJhIiBmb250LXdlaWdodD0iNzAwIj7tlbXsi6wg7Y+s7J247Yq4PC90ZXh0PgogIDx0ZXh0IHg9IjEyMCIgeT0iNDQwIiBmb250LXNpemU9IjI1IiBmb250LWZhbWlseT0iU2Vnb2UgVUkiIGZpbGw9IiMzMzQxNTUiPi0g7ZWc6rWt7Ja0L+yYgeyWtCDsoITtmZgg7KeA7JuQPC90ZXh0PgogIDx0ZXh0IHg9IjEyMCIgeT0iNDgwIiBmb250LXNpemU9IjI1IiBmb250LWZhbWlseT0iU2Vnb2UgVUkiIGZpbGw9IiMzMzQxNTUiPi0g66qo6424IOydtOuvuOyngCDtkZzsi5wg67CPIOuhnOy7rCDsoIDsnqU8L3RleHQ+CiAgPHRleHQgeD0iMTIwIiB5PSI1MjAiIGZvbnQtc2l6ZT0iMjUiIGZvbnQtZmFtaWx5PSJTZWdvZSBVSSIgZmlsbD0iIzMzNDE1NSI+LSAyMDAw64WEIOq4sOykgCDroIjtirjroZwv7ZiE64yAIOyekOuPmSDrtoTrpZg8L3RleHQ+Cjwvc3ZnPg==" />
+      </div>
+      <p class="cap">[결과 화면 1] 홈/진입 화면 구성 예시</p>
+
+      <div class="shot">
+        <img alt="비교 화면 샘플" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjcwMCIgdmlld0JveD0iMCAwIDEyMDAgNzAwIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZzIiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzBmMTcyYSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM3YzJkMTIiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjcwMCIgZmlsbD0idXJsKCNnMikiLz4KICA8cmVjdCB4PSI2MCIgeT0iNzAiIHdpZHRoPSIxMDgwIiBoZWlnaHQ9IjU2MCIgcng9IjIwIiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjk1Ii8+CiAgPHRleHQgeD0iMTEwIiB5PSIxNTAiIGZvbnQtc2l6ZT0iNDgiIGZvbnQtZmFtaWx5PSJTZWdvZSBVSSIgZmlsbD0iIzExMTgyNyIgZm9udC13ZWlnaHQ9IjcwMCI+Q29tcGFyZSDtmZTrqbQ8L3RleHQ+CiAgPHRleHQgeD0iMTEwIiB5PSIyMDUiIGZvbnQtc2l6ZT0iMjgiIGZvbnQtZmFtaWx5PSJTZWdvZSBVSSIgZmlsbD0iIzM3NDE1MSI+66qo6424IOyEoO2DnSArIOydtOuvuOyngCDrr7jrpqzrs7TquLAgKyDtla3rqqnrs4Qg7KCQ7IiYIOu5hOq1kDwvdGV4dD4KICA8cmVjdCB4PSIxMTAiIHk9IjI1MCIgd2lkdGg9IjMwMCIgaGVpZ2h0PSIxODAiIHJ4PSIxNCIgZmlsbD0iI2UyZThmMCIvPgogIDxyZWN0IHg9IjQ1MCIgeT0iMjUwIiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjE4MCIgcng9IjE0IiBmaWxsPSIjY2JkNWUxIi8+CiAgPHJlY3QgeD0iNzkwIiB5PSIyNTAiIHdpZHRoPSIzMDAiIGhlaWdodD0iMTgwIiByeD0iMTQiIGZpbGw9IiM5NGEzYjgiLz4KICA8dGV4dCB4PSIxODAiIHk9IjM1MCIgZm9udC1zaXplPSIyNCIgZm9udC1mYW1pbHk9IlNlZ29lIFVJIiBmaWxsPSIjMGYxNzJhIj5Nb2RlbCBBPC90ZXh0PgogIDx0ZXh0IHg9IjUyMCIgeT0iMzUwIiBmb250LXNpemU9IjI0IiBmb250LWZhbWlseT0iU2Vnb2UgVUkiIGZpbGw9IiMwZjE3MmEiPk1vZGVsIEI8L3RleHQ+CiAgPHRleHQgeD0iODYwIiB5PSIzNTAiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtZmFtaWx5PSJTZWdvZSBVSSIgZmlsbD0iIzBmMTcyYSI+TW9kZWwgQzwvdGV4dD4KICA8cmVjdCB4PSIxMTAiIHk9IjQ2MCIgd2lkdGg9Ijk4MCIgaGVpZ2h0PSIxMzAiIHJ4PSIxNCIgZmlsbD0iI2Y4ZmFmYyIgc3Ryb2tlPSIjY2JkNWUxIi8+CiAgPHRleHQgeD0iMTQ1IiB5PSI1MjAiIGZvbnQtc2l6ZT0iMjUiIGZvbnQtZmFtaWx5PSJTZWdvZSBVSSIgZmlsbD0iIzMzNDE1NSI+VHJhY3Rpb24gLyBDdXNoaW9uaW5nIC8gU3VwcG9ydCAvIFdlaWdodCAvIEJyZWF0aGFiaWxpdHkgLyBPdXRkb29yIER1cmFiaWxpdHk8L3RleHQ+Cjwvc3ZnPg==" />
+      </div>
+      <p class="cap">[결과 화면 2] 비교 화면(모델 선택 + 이미지 + 항목 비교)</p>
+
+      <div class="shot">
+        <img alt="추천 화면 샘플" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjcwMCIgdmlld0JveD0iMCAwIDEyMDAgNzAwIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZzMiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzE0NTMyZCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMxZTNhOGEiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjcwMCIgZmlsbD0idXJsKCNnMykiLz4KICA8cmVjdCB4PSI3MCIgeT0iNzAiIHdpZHRoPSIxMDYwIiBoZWlnaHQ9IjU2MCIgcng9IjIwIiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjk0Ii8+CiAgPHRleHQgeD0iMTIwIiB5PSIxNTAiIGZvbnQtc2l6ZT0iNDgiIGZvbnQtZmFtaWx5PSJTZWdvZSBVSSIgZmlsbD0iIzBmMTcyYSIgZm9udC13ZWlnaHQ9IjcwMCI+7LaU7LKcIOqysOqzvCDtmZTrqbQ8L3RleHQ+CiAgPHJlY3QgeD0iMTIwIiB5PSIyMDAiIHdpZHRoPSIzMDAiIGhlaWdodD0iMzYwIiByeD0iMTYiIGZpbGw9IiNmOGZhZmMiIHN0cm9rZT0iI2NiZDVlMSIvPgogIDxyZWN0IHg9IjQ1MCIgeT0iMjAwIiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjM2MCIgcng9IjE2IiBmaWxsPSIjZjhmYWZjIiBzdHJva2U9IiNjYmQ1ZTEiLz4KICA8cmVjdCB4PSI3ODAiIHk9IjIwMCIgd2lkdGg9IjMwMCIgaGVpZ2h0PSIzNjAiIHJ4PSIxNiIgZmlsbD0iI2Y4ZmFmYyIgc3Ryb2tlPSIjY2JkNWUxIi8+CiAgPHRleHQgeD0iMTU1IiB5PSIyNTUiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtZmFtaWx5PSJTZWdvZSBVSSIgZmlsbD0iIzBmMTcyYSIgZm9udC13ZWlnaHQ9IjcwMCI+7ZiE64yAIOy1nOqzoCDstpTsspw8L3RleHQ+CiAgPHRleHQgeD0iNDg1IiB5PSIyNTUiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtZmFtaWx5PSJTZWdvZSBVSSIgZmlsbD0iIzBmMTcyYSIgZm9udC13ZWlnaHQ9IjcwMCI+66CI7Yq466GcIOy1nOqzoCDstpTsspw8L3RleHQ+CiAgPHRleHQgeD0iODE1IiB5PSIyNTUiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtZmFtaWx5PSJTZWdvZSBVSSIgZmlsbD0iIzBmMTcyYSIgZm9udC13ZWlnaHQ9IjcwMCI+6rCA7ISx67mEIOy2lOyynDwvdGV4dD4KICA8dGV4dCB4PSIxNDUiIHk9IjMxNSIgZm9udC1zaXplPSIyMiIgZm9udC1mYW1pbHk9IlNlZ29lIFVJIiBmaWxsPSIjMzM0MTU1Ij7soJDsiJggKyDstpTsspwg7J207JygIOyEpOuqhTwvdGV4dD4KICA8dGV4dCB4PSI0NzUiIHk9IjMxNSIgZm9udC1zaXplPSIyMiIgZm9udC1mYW1pbHk9IlNlZ29lIFVJIiBmaWxsPSIjMzM0MTU1Ij7soJDsiJggKyDstpTsspwg7J207JygIOyEpOuqhTwvdGV4dD4KICA8dGV4dCB4PSI4MDUiIHk9IjMxNSIgZm9udC1zaXplPSIyMiIgZm9udC1mYW1pbHk9IlNlZ29lIFVJIiBmaWxsPSIjMzM0MTU1Ij7soJDsiJggKyDstpTsspwg7J207JygIOyEpOuqhTwvdGV4dD4KPC9zdmc+" />
+      </div>
+      <p class="cap">[결과 화면 3] 추천 결과 카드(설명 가능한 추천)</p>
+    </section>
+
+    <section class="section">
+      <h2>특장점</h2>
+      <ul>
+        <li>단순 쇼핑형이 아닌, 설명 가능한 비교/추천 유틸리티</li>
+        <li>세대(현대/레트로)와 포지션/코트 환경을 함께 반영</li>
+        <li>로컬 저장 기반으로 네트워크 의존도 낮고 빠른 응답</li>
+        <li>대회 시연에 유리한 비교표/스크린샷/CSV 내보내기 제공</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>한계점</h2>
+      <ul>
+        <li>실제 착화감은 개인차가 크므로 점수만으로 완전 대체 불가</li>
+        <li>가격/재고의 실시간 연동은 아직 미구현</li>
+        <li>모델별 이미지 출처 및 정확도 개선 여지 존재</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Todo</h2>
+      <ul>
+        <li>브랜드 공식 이미지 소스 정규화 및 오프라인 캐싱</li>
+        <li>모델별 실제 유저 리뷰 기반 점수 보정</li>
+        <li>비교 리포트 PDF 자동 생성 기능 추가</li>
+        <li>대회 발표용 데모 모드(샘플 프로필 자동 로딩) 구현</li>
+      </ul>
+    </section>
+
+    <p class="foot">작성일: 2026-03-30 | 프로젝트: HoopSole Compare</p>
+  </main>
+</body>
+</html>

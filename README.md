@@ -7,26 +7,25 @@
 ```text
 GitHub Repository
 ├─ src/        # 소스코드
-├─ release/    # 실행파일 (exe) 또는 Release
-├─ deps/       # 종속 패키지 / DLL
+├─ release/    # 실행파일 (exe)
+├─ deps/       # 종속 패키지 / DLL 보관용
+├─ RELEASE.md  # Git Release 노트
 └─ README.md
 ```
 
-## README.md 필수 내용
-
-### 1) 실행 환경 (Windows 버전 등)
+## 실행 환경
 
 - OS: Windows 10/11 (x64)
-- Node.js: 22.x 권장
-- npm: 10.x 이상
+- Node.js: 24.x
+- npm: 11.x
 
-### 2) 설치 절차 (종속 패키지 설치 명령어)
+## 설치 절차
 
 ```bash
 npm install
 ```
 
-### 3) 실행 방법 (단계별)
+## 실행 방법
 
 1. 개발 실행
 ```bash
@@ -38,36 +37,24 @@ npm run dev
 npm run build
 ```
 
-3. exe 패키징
+3. 실행파일 생성 (portable)
 ```bash
 npm run package
 ```
 
-4. 결과물 확인
-- 설치형: `release/HoopSole Compare Setup 0.1.0.exe`
-- 포터블: `release/HoopSole Compare 0.1.0.exe`
+4. 결과물
+- `release/HoopSole Compare Setup 0.1.0.exe`
 
-### 4) 관리자 권한 필요 여부
+## 관리자 권한 필요 여부
 
-- 개발 실행: 일반 권한으로 가능
-- 빌드/패키징: 일반 권한으로 가능
-- 설치형 exe 실행: 관리자 권한(UAC 승인) 필요
-- 포터블 exe 실행: 관리자 권한 요청될 수 있음 (`requireAdministrator` 적용)
+- 개발 실행: 관리자 권한 불필요
+- 빌드/패키징: 관리자 권한 불필요
+- EXE 실행: 관리자 권한 불필요 (`asInvoker`)
 
 ## 권한/배포 설정 요약
 
-- `requestedExecutionLevel: requireAdministrator`
-- NSIS `perMachine: true`
-- NSIS `allowElevation: true`
-- `portable` 타겟 포함
-
-## 이번 수정 반영 사항
-
-- 농구화 데이터 대폭 확장 (모델 수 증가)
-- 비교 화면에서 선택 불가 문제 수정
-- 신발 탐색 카드 이미지 표시 추가
-- 비교 화면에 선택된 농구화 이미지 표시
-- 레트로/현대 기준: `releaseYear < 2000 => retro`, `>= 2000 => modern`
+- `requestedExecutionLevel: asInvoker`
+- 대상: Windows `portable` 실행 파일
 
 ## 핵심 기능
 
@@ -78,4 +65,10 @@ npm run package
 - CSV 내보내기, 비교 화면 PNG 저장
 - 한국어/영어 전환 지원
 - 모델 이미지 표시
-# kong
+
+## 최신 반영 사항
+
+- Electron 패키징 시 빈 화면 문제 수정 (`vite base` 상대경로 적용)
+- 실행 파일 이름 통일: `HoopSole Compare Setup 0.1.0.exe`
+- EXE 파일 Users 그룹 실행 권한(RX) 적용
+- 레트로 기준: `releaseYear < 2000`, 현대 기준: `releaseYear >= 2000`
