@@ -19,7 +19,6 @@ const compareMetrics: Array<{ key: keyof Shoe; labelKey: string }> = [
 
 export function ComparePage() {
   const { compareIds, setCompareIds, t } = useAppState();
-  const [shoes, setShoes] = useState<Shoe[]>([]);
   const [allShoes, setAllShoes] = useState<Shoe[]>([]);
   const screenshotRef = useRef<HTMLDivElement | null>(null);
 
@@ -37,21 +36,14 @@ export function ComparePage() {
     }
   }, [allShoes, compareIds, setCompareIds]);
 
-  useEffect(() => {
-    if (compareIds.length === 0) {
-      setShoes([]);
-      return;
-    }
-
-    window.hoopsole.getShoesByIds(compareIds).then((items) => {
-      const ordered = compareIds
-        .map((id) => items.find((shoe) => shoe.id === id))
-        .filter((item): item is Shoe => Boolean(item));
-      setShoes(ordered);
-    });
-  }, [compareIds]);
-
   const availableOptions = useMemo(() => allShoes, [allShoes]);
+  const shoes = useMemo(
+    () =>
+      compareIds
+        .map((id) => allShoes.find((shoe) => shoe.id === id))
+        .filter((item): item is Shoe => Boolean(item)),
+    [allShoes, compareIds]
+  );
 
   const onExportCsv = async () => {
     if (shoes.length === 0) return;
